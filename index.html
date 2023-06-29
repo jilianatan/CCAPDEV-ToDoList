@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Todo List WebApp</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> 
+
+    <!-- External style sheet for design -->
+    <!-- WARNING: DO NOT EDIT THE STYLE SHEET -->
+    <!-- The styles for dynamically created divs are already provided in the file -->
+    <link rel="stylesheet" href="public/index.css">  
+
+    <!-- External js code -->
+    <!-- Edit the js file to add functionalities to the web page --> 
+    <script defer src="public/index.js"></script>
+  </head>
+  <body>
+    <div id="formContainer">
+      <form id="todoForm" name="todoForm" method="post">
+        <span>
+          <label for="taskName">Task: </label>
+          <input id="taskName" name="taskName" type="text" />
+        </span>
+        <span>
+          <label for="taskPriority">Priority: </label>
+          <select id="taskPriority" name="taskPriority">
+            <option id="opt3" value="high"> High </option>
+            <option id="opt2" value="medium"> Medium </option>
+            <option id="opt1" value="low"> Low </option>
+          </select>
+        </span>
+        <input id="submitBtn" type="submit" />
+      </form>
+      
+      <p id="error-message"> Task Name cannot be blank! </p>
+    </div>
+
+    <div id="todoContainer">
+      <div id="listHeader"> 
+        <span id="listTitle"> Todo List </span>
+        <span>
+          <label for="sortTodo"> Sort by: </label>
+          <select id="sortTodo" name="sortTodo">
+            <option value="" disabled selected> Select </option>
+            <option value="task"> Task </option>
+            <option value="priority"> Priority </option>
+            <option value="status"> Status </option>
+          </select>
+        </span>
+      </div>
+      <div id="itemsContainer">
+        <!-- 
+          Uncomment the lines below to see what list items should look like.
+          The submitted file should start empty, with the sample data remaining 
+          as commented.
+
+          Note that these elements are minimally defined to produce the desired
+          appearance and basic functionality. 
+          You may include additional elements / attributes on your
+          generated HTML components, if necessary.
+        -->
+        <!--
+        <div id="task0" class="todo-item">
+          <div class="todo-lhs">
+            <div class="todo-prio high"> </div>
+            <span class="todo-task"> Pay Mortgage </span>
+          </div>
+          <input class="todo-markBtn" type="checkbox" />
+        </div>
+        <div id="task1" class="todo-item">
+          <div class="todo-lhs">
+            <div class="todo-prio medium"> </div>
+            <span class="todo-task done"> Buy Groceries </span>
+          </div>
+          <input class="todo-markBtn" type="checkbox" checked />
+        </div>
+        <div id="task2" class="todo-item">
+          <div class="todo-lhs">
+            <div class="todo-prio low"> </div>
+            <span class="todo-task"> Get a haircut </span>
+          </div>
+          <input class="todo-markBtn" type="checkbox" />
+        </div> 
+        -->
+      </div>
+    </div>
+  </body>
+</html>
