@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Pathway+Extreme:wght@100;300;400;700&display=swap');
+
+:root {
+    font-family: 'Pathway Extreme', sans-serif;
+    --low-color: #22a6aa;
+    --med-color: #f29727;
+    --high-color: #f24c3d;
+    --background: #000000;
+    --primary1: #262A56;
+    --primary2: #B8621B;
+    --primary3: #E3CCAE;
+    --text-on-bg: #ffffff;
+    --checkbox: #117733;
+
+    --text-on-primary3: #000000;
+
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--background);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-on-bg);
+}
+
+#formContainer {
+    display: flex;
+    flex-direction: column;
+    width: 28rem;
+    background-color: var(--primary1);
+    align-items: center;
+    padding: 1rem;
+    border-radius: 5px;
+    margin: 2rem;
+}
+
+#todoForm {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+#error-message {
+    font-size: .7rem;
+    font-style: italic;
+    color: red;
+    margin: 0;
+}
+
+#todoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 33rem;
+    background-color: var(--primary1);
+    border-radius: 5px;
+    padding: 1rem;  
+    margin: 2rem;
+}
+
+#opt1 {
+    color: var(--low-color);
+}
+
+#opt2 {
+    color: var(--med-color);
+}
+
+#opt3 {
+    color: var(--high-color);
+}
+
+#listHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#listTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+input[type="submit"] {
+    border: 0px;
+    height: 2rem;
+    border-radius: 3px;
+    color: white;
+    box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2);
+    background-color: var(--primary2);
+}
+
+input[type="submit"]:active {
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+    background-color: var(--primary3);
+    color: black;
+}
+
+input[type="text"] {
+    font-family: 'Pathway Extreme', sans-serif;
+    border: 1px solid rgb(107, 107, 107);
+    border-radius: 3px;
+    color: white;
+    background-color: rgb(41, 34, 27);
+    font-weight: 300;
+}
+
+select {
+    font-family: 'Pathway Extreme', sans-serif;
+    font-weight: 500;
+    color: white;
+    border-radius: 3px;
+    background-color: rgb(41, 34, 27);
+}
+
+option {
+    font-family: 'Pathway Extreme', sans-serif;
+    font-weight: 300;
+}
+
+input[type="submit"] {
+    font-family: 'Pathway Extreme', sans-serif;
+    font-weight: 700;
+}
+
+/* task item-related rules */
+
+.todo-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    margin-top: 0.5rem;
+    padding-right: 0.5rem;
+    color: var(--text-on-primary3);
+    background-color: var(--primary3);
+}
+
+.todo-lhs {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    align-items: center;
+}
+
+.todo-task {
+    text-overflow: ellipsis;
+}
+
+.todo-task.done {
+    text-decoration: line-through;
+}
+
+.todo-prio {
+    height: 100%;
+    margin-right: 0.5rem;
+    width: 1rem;
+}
+
+.todo-prio.low {
+    background-color: var(--low-color);
+}
+
+.todo-prio.medium {
+    background-color: var(--med-color);
+}
+
+.todo-prio.high {
+    background-color: var(--high-color);
+}
+
+input[type="checkbox"] {
+    height: 1.5rem;
+    width: 1.5rem;
+    border: 1px solid var(--checkbox);
+    margin: 0;
+    appearance: none;
+    cursor: pointer;
+    border-radius: 100%;
+    background-color: transparent;
+}
+
+input[type="checkbox"]:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+input[type="checkbox"]:checked {
+    background-color: var(--checkbox);
+}
