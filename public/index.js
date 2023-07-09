@@ -10,79 +10,94 @@ submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
 
     // TODO: Write the code for the `Task Creation` functionality
-    // Get the task name and priority from the input fields
+    // get the task name and priority from the input fields
   const taskNameInput = document.querySelector("#taskName");
   const taskPriorityInput = document.querySelector("#taskPriority");
 
-  // Validate if the task name is not blank
+  // validate if the task name is not blank
   if (taskNameInput.value.trim() !== "") {
-    // Create a new task item
+    // create a new task item
     const newItem = document.createElement("div");
     newItem.classList.add("todo-item");
 
-    // Create the left-hand side of the task item
+    // create the left-hand side of the task item
     const lhsContainer = document.createElement("div");
     lhsContainer.classList.add("todo-lhs");
 
-    // Create the priority indicator
+    // create the priority indicator
     const priorityDiv = document.createElement("div");
     const selectedPriority = taskPriorityInput.options[taskPriorityInput.selectedIndex].value;
     priorityDiv.classList.add("todo-prio", selectedPriority);
 
-    // Create the task name
+    // create the task name
     const taskNameSpan = document.createElement("span");
     taskNameSpan.classList.add("todo-task");
     taskNameSpan.textContent = taskNameInput.value;
 
-    // Append the priority indicator and task name to the left-hand side container
+    // append the priority indicator and task name to the left-hand side container
     lhsContainer.appendChild(priorityDiv);
     lhsContainer.appendChild(taskNameSpan);
 
-    // Create the checkbox
+    // create the checkbox
     const checkboxInput = document.createElement("input");
     checkboxInput.classList.add("todo-markBtn");
     checkboxInput.type = "checkbox";
 
-    // Append the left-hand side container and checkbox to the task item
+    // append the left-hand side container and checkbox to the task item
     newItem.appendChild(lhsContainer);
     newItem.appendChild(checkboxInput);
 
-    // Append the new task item to the items container
+    // append the new task item to the items container
     const itemsContainer = document.querySelector("#itemsContainer");
     itemsContainer.appendChild(newItem);
 
-    // Reset the input fields
+    // reset the input fields
     taskNameInput.value = "";
     taskPriorityInput.selectedIndex = 0;
 
-    // Hide the error message (if visible)
+    // hide the error message (if visible)
     const errorMessage = document.querySelector("#error-message");
     errorMessage.style.display = "none";
   } else {
-    // Display error message if the task name is blank
+    // display error message if the task name is blank
     const errorMessage = document.querySelector("#error-message");
     errorMessage.style.display = "block";
   }
 });
 
-// Toggle Mark as Done functionality
+// TODO: Write the code for the `Toggle Mark as Done` functionality
 const itemsContainer = document.querySelector("#itemsContainer");
 itemsContainer.addEventListener("click", function (e) {
   if (e.target.classList.contains("todo-markBtn")) {
     const taskItem = e.target.parentNode;
-    taskItem.querySelector(".todo-task").classList.toggle("done");
+    const checkbox = e.target;
+    const todoTask = taskItem.querySelector(".todo-task");
+    
+    // Toggle the 'done' class on the task item
+    todoTask.classList.toggle("done");
+
+    // Toggle the checkbox style
+    checkbox.classList.toggle("marked");
+
+    // Set the checkbox color to green when checked
+    if (checkbox.checked) {
+      checkbox.style.backgroundColor = "green";
+    } else {
+      checkbox.style.backgroundColor = "transparent";
+    }
   }
 });
 
-// Sort Task by functionality
+
+// TODO, BONUS: Write the code for the `Sort Task by ..` functionality
 const sortTodoSelect = document.querySelector("#sortTodo");
 sortTodoSelect.addEventListener("change", function () {
   const sortBy = sortTodoSelect.value;
 
-  // Get all the task items
+  // get all the task items
   const taskItems = Array.from(document.querySelectorAll(".todo-item"));
 
-  // Sort the task items based on the selected option
+  // sort the task items based on the selected option
   if (sortBy === "task") {
     taskItems.sort((a, b) => {
       const taskNameA = a.querySelector(".todo-task").textContent.toLowerCase();
@@ -91,9 +106,10 @@ sortTodoSelect.addEventListener("change", function () {
     });
   } else if (sortBy === "priority") {
     taskItems.sort((a, b) => {
+      const priorityMap = { high: 1, medium: 2, low: 3 };
       const priorityA = a.querySelector(".todo-prio").classList[1];
       const priorityB = b.querySelector(".todo-prio").classList[1];
-      return priorityA.localeCompare(priorityB);
+      return priorityMap[priorityA] - priorityMap[priorityB];
     });
   } else if (sortBy === "status") {
     taskItems.sort((a, b) => {
@@ -103,12 +119,7 @@ sortTodoSelect.addEventListener("change", function () {
     });
   }
 
-  // Reorder the task items in the container
+  // reorder the task items in the container
   taskItems.forEach((item) => itemsContainer.appendChild(item));
 
-
 });
-
-// TODO: Write the code for the `Toggle Mark as Done` functionality
-
-// TODO, BONUS: Write the code for the `Sort Task by ..` functionality
